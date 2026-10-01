@@ -66,7 +66,6 @@ It is read-only. It never clicks, types or changes the page. Without a browser t
 | [`references/ux-laws.md`](references/ux-laws.md) | The 20 laws: definition, what to look for, directives, caveats, platform target sizes |
 | [`references/design-brief-template.md`](references/design-brief-template.md) | The brief's 15-section structure |
 | [`references/implementing-a-handoff.md`](references/implementing-a-handoff.md) | Turning a design handoff into code without losing function |
-| [`references/example-request.md`](references/example-request.md) | A worked example: the original request, what was corrected, what each phase produced |
 | [`scripts/measure-ui.js`](scripts/measure-ui.js) | Baseline and acceptance measurements |
 
 ## Contributing

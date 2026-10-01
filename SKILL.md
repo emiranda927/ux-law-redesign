@@ -92,5 +92,4 @@ These came from a real redesign; each one cost time.
 - `references/ux-laws.md`: the 20 laws with definitions, what to look for, directives and caveats, plus others worth reaching for. Read in phase 4.
 - `references/design-brief-template.md`: the brief's structure and what goes in each section. Read in phase 6.
 - `references/implementing-a-handoff.md`: turning a design handoff into code without losing function. Read in phase 7.
-- `references/example-request.md`: the request this skill was built from, cleaned up, with what came out of each phase. Read it when you want to calibrate depth and tone.
 - `scripts/measure-ui.js`: the baseline and acceptance measurements. Run it; don't paraphrase it.

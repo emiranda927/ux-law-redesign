@@ -39,7 +39,7 @@ This list is what makes "retain as much of the prototype as possible" real. User
 
 Produce three lists:
 
-1. **Deliberate differences**, as a table: *prototype does → build does → why*. Typical rows: verdicts read from the server rather than computed in the browser; the real data model where the prototype simplified (several on-call windows, not one); real persistence (undo as operation inverses, not snapshots); behaviour nobody asked to change stays as it is.
+1. **Deliberate differences**, as a table: *prototype does → build does → why*. Typical rows: verdicts read from the server rather than computed in the browser; the real data model where the prototype simplified (several time windows, not one); real persistence (undo as operation inverses, not snapshots); behaviour nobody asked to change stays as it is.
 2. **Prototype defects not to port:** missing focus styles (`outline: none`), touch that blocks scrolling (`touch-action: none` everywhere), editors' controls shown to read-only users, ID collisions, keyboard shortcuts that hijack text fields, debugging tags left in the UI, hard-coded users.
 3. **Parity items the prototype dropped**, which the build keeps: diff the handoff against the brief's parity checklist and the phase 2 inventory.
 
