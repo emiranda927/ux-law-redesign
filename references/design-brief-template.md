@@ -18,6 +18,7 @@ Use this in phase 6. The brief goes to an AI design tool (Claude Design, v0, Fig
 - **Numbers for success.** "Fits in 1.5 screens at 1440×900" gets met; "more compact" doesn't.
 - **Questions it must answer.** Anything you can't decide yourself becomes a numbered question the handoff must answer in writing.
 - **Plain language.** Short sentences in the users' own terms. No codebase words (chip, popover, toggle) in the product copy the tool writes.
+- **Real copy for every state.** Left alone, a design tool writes "Something went wrong" and "No data". Ask for a copy deck and give it the copy rules (voice, button labels, error pattern) from `references/ux-copy.md`.
 
 ## The template
 
@@ -81,9 +82,17 @@ Written <date> for <design tool>. <One line on where the handoff should go when 
 2. …
 20. …
 
-## 7. Visual direction
+**Copy audit** (see `references/ux-copy.md`)
 
-*Feel (for example "premium, Apple/Google craft on the existing brand"). Palette with one meaning per colour. Type: families, weights, sizes and the minimum. Icons: one set, a maximum count, no Unicode glyphs as icons. Surfaces, radius, shadows. Motion tokens and reduced motion. Accessibility: AA contrast, colour never the only signal, target size, keyboard path, visible focus, accessible names. Dark mode: required or not.*
+| Principle | State | Today | Change to |
+|---|---|---|---|
+| <e.g. Names the action> | <default> | <the real string> | <the better string> |
+
+*Five to eight rows for the worst strings: real text from the screen, the state it appears in, the principle it breaks.*
+
+## 7. Visual and copy direction
+
+*Feel (for example "premium, Apple/Google craft on the existing brand"). Voice: three traits and one thing it never does. Tone by state (error, success, destructive confirmation, empty). Banned words. Palette with one meaning per colour. Type: families, weights, sizes and the minimum. Icons: one set, a maximum count, no Unicode glyphs as icons. Surfaces, radius, shadows. Motion tokens and reduced motion. Accessibility: AA contrast, colour never the only signal, target size, keyboard path, visible focus, accessible names. Dark mode: required or not.*
 
 ## 8. Parity checklist: every one of these must exist in the design
 
@@ -101,7 +110,7 @@ Written <date> for <design tool>. <One line on where the handoff should go when 
 
 ## 11. Constraints
 
-*Widths supported and the smallest that must not clip. Platform (desktop-first, mobile, both). Must be buildable from <data contract>. Styling approach and framework limits. Copy rules.*
+*Widths supported and the smallest that must not clip. Platform (desktop-first, mobile, both). Must be buildable from <data contract>. Styling approach and framework limits. Copy rules: buttons are verb + object; errors say what's wrong and how to fix it, next to the field; every field keeps a visible label; one term per concept.*
 
 ## 12. Acceptance targets (hard numbers)
 
@@ -113,6 +122,7 @@ Written <date> for <design tool>. <One line on where the handoff should go when 
 - <Top task> in ≤ <N> interactions. Destructive actions undoable for ≥ <5> s.
 - Visible feedback within 100ms for every action.
 - AA contrast on all text; targets ≥ <44 / 24> px.
+- Copy: 0 buttons labelled Submit, OK, Yes or No; 0 links labelled "click here" or "read more"; 0 fields labelled only by a placeholder; every error names the problem and the fix; body sentences average ≤ <20> words, none over <25>.
 
 ## 13. Questions to answer explicitly in the handoff
 
@@ -123,6 +133,7 @@ Written <date> for <design tool>. <One line on where the handoff should go when 
 - One HTML prototype, seeded with §4, showing every state in the §8 parity checklist.
 - A "Why this shape" panel mapping each decision to a §6 law and a §2 task.
 - A handoff README mapping each §8 item to where it lives, and answering §13.
+- A copy deck: every string by screen and state (default, empty, loading, error, success, destructive confirmation), in a table the build can copy verbatim.
 ```
 
 ## Section notes
@@ -139,6 +150,8 @@ Written <date> for <design tool>. <One line on where the handoff should go when 
 
 **§6.** Twenty short entries. Each names a real element and carries evidence. Merge laws that produce the same directive rather than repeating it. If the user supplied a list with errors, the corrected names go here and the correction goes in your reply.
 
+**§6 copy audit.** Use the real strings and name the state each appears in. Errors, destructive confirmations and the empty state usually carry the most value.
+
 **§7.** When the user asks for a feel ("premium, like Google or Apple"), translate it into specifics: Apple HIG's clarity, deference and depth used only where it means something; Material 3's precise type and spacing scales and adaptive layout. Keep the existing brand unless the user decided otherwise in phase 5.
 
 **§8.** The parity checklist is the redesign's contract. Build it from the phase 2 inventory: every piece of information, interaction, state and permission tier. Group by area of the screen.
@@ -147,7 +160,7 @@ Written <date> for <design tool>. <One line on where the handoff should go when 
 
 **§10.** Suggest the affordances your audit wants (undo, jump-to, a finished state), tagged. Say explicitly what the tool should *not* invent (for example publishing, locking, payment).
 
-**§12.** Every target maps to a §5 measurement, so the build can be checked with the same script.
+**§12.** Every target maps to a §5 measurement, so the build can be checked with the same script. The copy targets map to the script's `copy` and `forms` sections; the sentence-length numbers are starting points to tune, not researched limits.
 
 **§13.** Five to ten questions. Good ones are decisions with real trade-offs: where a week-level item lives at every width; how a draft reads against a final item without dashed borders; how the design tells apart people who share a name.
 
@@ -161,4 +174,4 @@ Save the brief in the repo (`docs/design-brief-<screen>-v<N>.md`). Then give the
 
 A short opener that works:
 
-> Redesign <screen> from the attached brief. Read it all first. Build one HTML prototype seeded with §4 that shows every state in §8, a "Why this shape" panel tying each decision to §6 and §2, and a handoff README that maps §8 and answers §13. Tag anything new NEW or NEW·API.
+> Redesign <screen> from the attached brief. Read it all first. Build one HTML prototype seeded with §4 that shows every state in §8, a "Why this shape" panel tying each decision to §6 and §2, a copy deck of every string by state, and a handoff README that maps §8 and answers §13. Tag anything new NEW or NEW·API.

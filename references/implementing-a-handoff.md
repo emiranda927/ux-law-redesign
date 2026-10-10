@@ -40,7 +40,7 @@ This list is what makes "retain as much of the prototype as possible" real. User
 Produce three lists:
 
 1. **Deliberate differences**, as a table: *prototype does → build does → why*. Typical rows: verdicts read from the server rather than computed in the browser; the real data model where the prototype simplified (several time windows, not one); real persistence (undo as operation inverses, not snapshots); behaviour nobody asked to change stays as it is.
-2. **Prototype defects not to port:** missing focus styles (`outline: none`), touch that blocks scrolling (`touch-action: none` everywhere), editors' controls shown to read-only users, ID collisions, keyboard shortcuts that hijack text fields, debugging tags left in the UI, hard-coded users.
+2. **Prototype defects not to port:** missing focus styles (`outline: none`), touch that blocks scrolling (`touch-action: none` everywhere), editors' controls shown to read-only users, ID collisions, keyboard shortcuts that hijack text fields, debugging tags left in the UI, hard-coded users, filler copy in the unhappy states ("Something went wrong", "No data"), and copy that promises a capability the build doesn't have.
 3. **Parity items the prototype dropped**, which the build keeps: diff the handoff against the brief's parity checklist and the phase 2 inventory.
 
 Every other visual or interaction difference between the build and the prototype is a bug.
@@ -82,6 +82,7 @@ Watch for these while building:
 - **Parity walk** in the browser: every item in the brief's §8 checklist, as each permission tier.
 - **Measure** with `scripts/measure-ui.js` at 1280, 1440 and 1920 and compare with the brief's §12 targets and §5 baseline. Report the before/after table.
 - **Scene by scene:** open the prototype and the build side by side at the same width and walk every scene the prototype shows. List any difference that isn't in §3's table and fix it.
+- **Copy walk:** compare every string in the build with the handoff's copy deck, including the error, empty, loading and confirmation states (trigger the safe ones; read the rest from the code). Re-run the `copy` section of the measurement script and compare with the brief's copy targets.
 - Check keyboard focus is visible everywhere, reduced motion collapses animation, and nothing says the old product name.
 
 ## 7. Ship

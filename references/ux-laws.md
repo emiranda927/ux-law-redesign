@@ -2,6 +2,8 @@
 
 Use this in phase 4. For each law, write one entry for the screen in front of you: the **evidence** (a measured number, a file and line, an observation from a screenshot) and a **directive** that names a real element and says what to do with it. A law with nothing to say about this screen gets one line saying so. Two or three sentences per law is plenty.
 
+The words on the screen are audited separately: see `ux-copy.md`. Several laws below (peak-end, Tesler, Postel, Hick) have a copy side, and the table there maps them.
+
 ## Contents
 
 - [How the laws fit together](#how-the-laws-fit-together)
@@ -202,7 +204,7 @@ Lists copied from two-column infographics often arrive numbered out of order (1,
 
 **Look for:** the worst moment (an error with no way out, lost work, a refusal that doesn't say why, a raw server error); how the task ends (silence, or a clear "done").
 
-**Directives that work:** remove negative peaks first (undo for destructive actions, plain-language errors with a next step); make the key success a small, satisfying moment; end the task on a calm, explicit finished state.
+**Directives that work:** remove negative peaks first (undo for destructive actions, plain-language errors that say what's wrong and how to fix it; see `ux-copy.md`); make the key success a small, satisfying moment; end the task on a calm, explicit finished state.
 
 **Caveat:** it doesn't license long or painful flows that end nicely (duration neglect has limits), and it's not a reason to hide bad news.
 
@@ -275,6 +277,7 @@ Not part of the 20, but often the better explanation for a finding:
 - **Cognitive load:** the mental effort a screen demands; remove extraneous load so the essential load fits (Sweller 1988).
 - **Choice overload:** too many options can reduce satisfaction and stop people choosing at all (Iyengar and Lepper 2000; the effect varies a lot between studies).
 - **Mental model:** people predict behaviour from what they believe the system is; match it or teach the difference.
+- **Scanning, not reading:** people read the first line, then a shorter second line, then scan down the left edge (NN/g's F-pattern, 2006). NN/g now treats it as a failure mode design should prevent: front-load headings, labels and list items so the key word comes first. Pairs with the serial position effect. Details and evidence in `ux-copy.md`.
 - **Selective attention and banner blindness:** people ignore what looks like an ad or like chrome.
 - **Paradox of the active user:** people start using a product without reading instructions (Carroll and Rosson 1987). Make it learnable by doing.
 - **Flow:** full, focused engagement needs clear goals, immediate feedback and a balance of challenge and skill (Csikszentmihalyi 1990).

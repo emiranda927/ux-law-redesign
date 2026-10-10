@@ -23,6 +23,9 @@
  * computed (contrastUnmeasured); text at opacity 0 is judged as it will look
  * once revealed (waitingToAppear). Content inside iframes from another origin
  * (embedded forms, maps) is invisible to the script; forms.iframes lists them.
+ * The copy section counts generic button and link labels, vague error text that
+ * is visible right now, and sentence length. Error states usually aren't on screen
+ * at rest, so vagueMessages of 0 means "none showing", not "none exist".
  */
 window.measureUI = function measureUI(options) {
   const opts = Object.assign(
@@ -321,6 +324,38 @@ window.measureUI = function measureUI(options) {
       iconFontElements: iconFont,
       images: imgs.length,
       imagesWithoutAlt: imgs.filter((i) => !i.hasAttribute('alt')).length,
+    };
+  });
+
+  // Copy: proxies for the copy audit (references/ux-copy.md). They can't judge meaning or tone.
+  section('copy', () => {
+    const genericButton = /^(submit|ok|okay|yes|no|go|click here|here|more)$/i;
+    const genericLink = /^(click here|here|read more|learn more|more|more info|link)$/i;
+    const vagueMessage = /\b(oops|something went wrong|invalid (input|entry|value)|an error (has )?occurred|unknown error|try again later)\b/i;
+    const text = (el) => (el.innerText || el.value || el.getAttribute('aria-label') || '').trim().replace(/\s+/g, ' ');
+    const words = (s) => (s.match(/\S+/g) || []).length;
+    const buttons = [...root.querySelectorAll('button,[role=button],input[type=submit],input[type=button]')].filter(usable).map(text).filter(Boolean);
+    const links = [...root.querySelectorAll('a[href]')].filter(usable).map(text).filter(Boolean);
+    const messages = [...root.querySelectorAll('[role=alert],[role=status],[aria-live],[class*="error" i],[class*="invalid" i]')]
+      .filter(usable).map(text).filter(Boolean);
+    const vague = messages.filter((m) => vagueMessage.test(m));
+    const prose = [...root.querySelectorAll('p,li,dd,blockquote')].filter((el) => usable(el) && ownText(el));
+    const sentences = prose.flatMap((el) => el.innerText.split(/(?<=[.!?])\s+/)).map(words).filter((n) => n > 0);
+    return {
+      buttons: buttons.length,
+      genericButtons: buttons.filter((b) => genericButton.test(b)).length,
+      genericButtonSamples: [...new Set(buttons.filter((b) => genericButton.test(b)))].slice(0, opts.samples),
+      longButtons: buttons.filter((b) => words(b) > 4).length,
+      links: links.length,
+      genericLinks: links.filter((l) => genericLink.test(l)).length,
+      genericLinkSamples: [...new Set(links.filter((l) => genericLink.test(l)))].slice(0, opts.samples),
+      messagesOnScreen: messages.length,
+      vagueMessages: vague.length,
+      vagueMessageSamples: vague.slice(0, opts.samples).map((m) => m.slice(0, 60)),
+      exclamationMarks: (root.innerText.match(/!/g) || []).length,
+      sentences: sentences.length,
+      avgSentenceWords: sentences.length ? +(sentences.reduce((a, b) => a + b, 0) / sentences.length).toFixed(1) : null,
+      sentencesOver25Words: sentences.filter((n) => n > 25).length,
     };
   });
 

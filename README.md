@@ -13,10 +13,11 @@ domain rules → functional inventory → measured baseline → law-by-law audit
 
 1. **Ground truth.** The agent reads the code, specs and recent changes to learn what the screen is for and which rules it must express.
 2. **Inventory.** Every function, state and permission tier on the current screen, kept as a parity checklist so the redesign loses nothing.
-3. **Baseline.** [`scripts/measure-ui.js`](scripts/measure-ui.js) measures the live UI: page height in screens, truncated text, smallest text, undersized tap targets, colours and borders in use, text below AA contrast, Unicode glyphs used as icons.
+3. **Baseline.** [`scripts/measure-ui.js`](scripts/measure-ui.js) measures the live UI: page height in screens, truncated text, smallest text, undersized tap targets, colours and borders in use, text below AA contrast, Unicode glyphs used as icons, and copy proxies (generic button and link labels, vague error text on screen, sentence length).
 4. **Audit.** 20 laws of UX (Hick, Fitts, Tesler, Occam, Pareto, the four Gestalt grouping laws, Prägnanz, Von Restorff, Miller, serial position, Zeigarnik, peak-end, Jakob, Doherty, Postel, Parkinson, aesthetic-usability). Each gets evidence from your screen and a directive that names a real element. The reference also lists the caveats, such as Miller's law not being a menu limit and the Zeigarnik memory effect replicating poorly.
-5. **Brief.** A structured document for Claude Design, v0, Figma Make or a human designer: real seed data, the measured problems, hard numeric targets, open questions the designer must answer in writing, and a deliverables list.
-6. **Handoff.** When the prototype comes back, the skill builds it. The prototype decides every pixel, string and interaction. It never decides business rules.
+5. **Copy audit.** The words get their own pass, using [`references/ux-copy.md`](references/ux-copy.md): UX-writing principles with evidence ratings, rules by component (buttons, errors, labels, empty states, confirmations), and before → after rewrites of the worst strings. The measuring script reports copy proxies such as generic button labels and vague error text.
+6. **Brief.** A structured document for Claude Design, v0, Figma Make or a human designer: real seed data, the measured problems, hard numeric targets, voice and copy rules, open questions the designer must answer in writing, and a deliverables list that includes a copy deck.
+7. **Handoff.** When the prototype comes back, the skill builds it. The prototype decides every pixel, string and interaction. It never decides business rules.
 
 ## Install
 
@@ -64,6 +65,7 @@ It is read-only. It never clicks, types or changes the page. Without a browser t
 |---|---|
 | [`SKILL.md`](SKILL.md) | The workflow, seven phases, plus gotchas from a real redesign |
 | [`references/ux-laws.md`](references/ux-laws.md) | The 20 laws: definition, what to look for, directives, caveats, platform target sizes |
+| [`references/ux-copy.md`](references/ux-copy.md) | UX-writing principles, rules by component, the copy audit, and what the research does and doesn't show |
 | [`references/design-brief-template.md`](references/design-brief-template.md) | The brief's 15-section structure |
 | [`references/implementing-a-handoff.md`](references/implementing-a-handoff.md) | Turning a design handoff into code without losing function |
 | [`scripts/measure-ui.js`](scripts/measure-ui.js) | Baseline and acceptance measurements |
